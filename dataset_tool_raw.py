@@ -4,7 +4,7 @@ import numpy as np
 from scipy.io import loadmat, savemat
 import h5py
 
-# use torchvision
+# use import torchvision 
 
 data_dir = "./datasets/SIDD/SIDD_Medium_Raw/Data"
 path_all_noisy = glob(os.path.join(data_dir, '**/*NOISY*.MAT'), recursive=True)
