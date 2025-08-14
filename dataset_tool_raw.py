@@ -4,14 +4,17 @@ import numpy as np
 from scipy.io import loadmat, savemat
 import h5py
 
-# use import torchvision 
-
-data_dir = "./datasets/SIDD/SIDD_Medium_Raw/Data"
-path_all_noisy = glob(os.path.join(data_dir, '**/*NOISY*.MAT'), recursive=True)
+# data_dir = "./datasets/SIDD/SIDD_Medium_Raw/Data"
+data_dir = "data/datasets/tests"
+#path_all_noisy = glob(os.path.join(data_dir, '**/*NOISY*.MAT'), recursive=True)
+path_all_noisy = glob(os.path.join(data_dir, '**/*output*.mat'), recursive=True)
 path_all_noisy = sorted(path_all_noisy)
+print(path_all_noisy)
 print('Number of big images: {:d}'.format(len(path_all_noisy)))
 
-save_folder = "./datasets/SIDD/SIDD_Medium_Raw_noisy_sub512"
+
+#save_folder = "./datasets/SIDD/SIDD_Medium_Raw_noisy_sub512"
+save_folder = "data/datasets/tests_out"
 if os.path.exists(save_folder):
     os.system("rm -r {}".format(save_folder))
 os.makedirs(save_folder)   
