@@ -25,9 +25,18 @@ step = 256
 for ii in range(len(path_all_noisy)):
     img_name, extension = os.path.splitext(os.path.basename(path_all_noisy[ii]))
     print(img_name)
-    mat = h5py.File(path_all_noisy[ii])
-    im = mat['x'].value
-    h, w = im.shape
+    #mat = h5py.File(path_all_noisy[ii])
+    mat = loadmat(path_all_noisy[ii])
+    print(mat.keys()) # dict_keys(['__header__', '__version__', '__globals__', 'satellite_data', 'metadata'])
+    #im = mat['x'].value
+    im = mat['satellite_data']
+    print(im.shape) # (1, 184, 313)
+    #h, w = im.shape
+    n, h, w = im.shape
+    single_image = im[0]
+    if h < crop_size or w < crop_size:
+        print(f"Skipping {img_name}, too small ({h}x{w})")
+        continue
     # prepare to crop
     h_space = np.arange(0, h - crop_size + 1, step)
     if h - (h_space[-1] + crop_size) > 0:
