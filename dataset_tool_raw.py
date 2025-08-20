@@ -14,13 +14,16 @@ print('Number of big images: {:d}'.format(len(path_all_noisy)))
 
 
 #save_folder = "./datasets/SIDD/SIDD_Medium_Raw_noisy_sub512"
-save_folder = "data/datasets/tests_out"
+save_folder = "data/datasets/tests_out_raw"
 if os.path.exists(save_folder):
     os.system("rm -r {}".format(save_folder))
 os.makedirs(save_folder)   
 
-crop_size = 512
-step = 256
+#crop_size = 512
+#step = 256
+# randomly chosen
+crop_size = 128
+step = 64
 
 for ii in range(len(path_all_noisy)):
     img_name, extension = os.path.splitext(os.path.basename(path_all_noisy[ii]))
@@ -33,12 +36,13 @@ for ii in range(len(path_all_noisy)):
     print(im.shape) # (1, 184, 313)
     #h, w = im.shape
     n, h, w = im.shape
-    single_image = im[0]
-    if h < crop_size or w < crop_size:
+    """if h < crop_size or w < crop_size:
         print(f"Skipping {img_name}, too small ({h}x{w})")
-        continue
+        continue"""
     # prepare to crop
     h_space = np.arange(0, h - crop_size + 1, step)
+    print(h_space)
+    #if h - (h_space[-1] + crop_size) > 0:
     if h - (h_space[-1] + crop_size) > 0:
         h_space = np.append(h_space, h - crop_size)
     w_space = np.arange(0, w - crop_size + 1, step)

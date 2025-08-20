@@ -29,8 +29,10 @@ def load_and_save(img_path):
     img.save(save_path, quality=100, subsampling=0)
 
 
-input_dir = "./ILSVRC2012_img_val"
-save_dir = "./Imagenet_val"
+#input_dir = "./ILSVRC2012_img_val"
+input_dir = "data/datasets/tests"
+#save_dir = "./Imagenet_val"
+save_dir = "data/datasets/tests_out"
 
 images = []
 pattern = os.path.join(input_dir, '**/*')
@@ -43,7 +45,7 @@ for fname in all_fnames:
 images = sorted(images)
 
 filtered = filter_image_sizes(images)
-print(len(filtered))
+print("filtered image size:",len(filtered))
 
 os.makedirs(save_dir, exist_ok=True)
 for idx, img_path in enumerate(filtered):

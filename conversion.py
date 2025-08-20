@@ -12,9 +12,12 @@ mat_data = {
     "satellite_data": data,      # The actual pixel values
     "metadata": profile          # Optional: metadata about the raster
 }
+#satellite data
+print(data[:5])
+print(data.shape) # (1, 184, 313)
+print(data.dtype) #float32
 # Save as MAT file
 savemat("data/datasets/tests/output.mat", mat_data)
 
 print("Conversion complete: output.mat")
 Dictionary = loadmat('data/datasets/tests/output.mat')
-print(Dictionary)
