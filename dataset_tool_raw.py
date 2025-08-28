@@ -3,9 +3,23 @@ from glob import glob
 import numpy as np
 from scipy.io import loadmat, savemat
 import h5py
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("ctrnngtrung/miniimagenet")
+# saved to ~/.cache/kagglehub/datasets/
+print("Path to dataset files:", path)
+
+"""use data from ~/.cache/kagglehub/datasets/ctrnngtrung/miniimagenet/versions/1
+│ ├── 1
+│ │ ├── map_clsloc.txt  
+│ │ ├── preprocess.py 
+│ │ ├── test
+│ │ ├── train
+"""
 
 # data_dir = "./datasets/SIDD/SIDD_Medium_Raw/Data"
-data_dir = "data/datasets/tests"
+#data_dir = "data/datasets/tests"
 #path_all_noisy = glob(os.path.join(data_dir, '**/*NOISY*.MAT'), recursive=True)
 path_all_noisy = glob(os.path.join(data_dir, '**/*output*.mat'), recursive=True)
 path_all_noisy = sorted(path_all_noisy)
