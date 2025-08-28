@@ -18,10 +18,28 @@ print("Path to dataset files:", path)
 │ │ ├── train
 """
 
-# data_dir = "./datasets/SIDD/SIDD_Medium_Raw/Data"
-#data_dir = "data/datasets/tests"
+# -----------------------------------------
+# original ver.
+# -----------------------------------------
+
+#data_dir = "./datasets/SIDD/SIDD_Medium_Raw/Data"
 #path_all_noisy = glob(os.path.join(data_dir, '**/*NOISY*.MAT'), recursive=True)
-path_all_noisy = glob(os.path.join(data_dir, '**/*output*.mat'), recursive=True)
+
+# -----------------------------------------
+# kaggle ver.
+# -----------------------------------------
+
+data_dir = "~/.cache/kagglehub/datasets/ctrnngtrung/miniimagenet/versions/1"
+path_all_noisy = glob(os.path.join(data_dir, '**/*NOISY*.MAT'), recursive=True)
+
+# -----------------------------------------
+# satellite data ver.
+# -----------------------------------------
+
+#data_dir = "data/datasets/tests"
+#path_all_noisy = glob(os.path.join(data_dir, '**/*output*.mat'), recursive=True)
+
+# -----------------------------------------
 path_all_noisy = sorted(path_all_noisy)
 print(path_all_noisy)
 print('Number of big images: {:d}'.format(len(path_all_noisy)))
